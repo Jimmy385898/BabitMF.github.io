@@ -312,6 +312,13 @@ export PYTHONPATH=$(pwd)/output/bmf/lib:$(pwd)/output
 
 BMF supports compilation and builds on three platforms: Linux, Windows, and Mac. You can choose the method you want to use according to your needs.
 
+**Important Note: CMake Version Requirements**
+When building BMF from source:
+- Base requirement: CMake 3.5 or higher
+- If CUDA support is needed (enabled by default), CMake 3.17 or higher is required
+  
+You can check your current CMake version by running `cmake --version`. If the version does not meet the requirements, please upgrade CMake.
+
 ### Linux
 
 ```Shell
@@ -348,7 +355,7 @@ BMF uses the MSVC toolchain as the compilation tool on the Windows platform. Bef
 1. First, you need to install Visual Studio. Our supported versions include 2013, 2015, 2017, 2019 and 2022, and install the Windows SDK when installing VS.
 2. Install and configure the ```msys2 mingw64``` environment https://www.msys2.org/
 3. When completing the above two items, please open x64 Native Tools Command Prompt for VS 20xx in administrator mode, enter the msys2 installation directory, and execute``` msys2_shell.cmd -mingw64 -use-full-path```. You will enter the msys2 shell command window.
-4. You need to install [vcpkg](#https://github.com/microsoft/vcpkg) and execute the following command to install some dependent libraries:
+4. You need to install [vcpkg](https://github.com/microsoft/vcpkg) and execute the following command to install some dependent libraries:
 ```
 pacman -Sy yasm automake autoconf git vim openssl-devel zlib-devel
 ./vcpkg.exe install bzip2:x64-windows zlib:x64-windows liblzma:x64-windows dlfcn-win32:x64-windows
